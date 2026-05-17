@@ -61,4 +61,30 @@ router.get('/', usersController.getUsers);
  */
 router.post('/', usersController.createUser);
 
+/**
+ * @swagger
+ * /users/declined:
+ *  post:
+ *    summary: Create a new declined user
+ *   tags: [Users]
+ *  requestBody:
+ *    required: true
+ *   content:
+ *     application/json:
+ *      schema:
+ *       type: object
+ *      required:
+ *       - name
+ *     properties:
+ *     name:
+ *      type: string
+ *     example: Max Mustermann
+ * responses:
+ *  200:
+ *   description: Declined user created successfully
+ *  500:
+ *  description: Declined user could not be created
+ * */
+router.post('/declined', usersController.createDeclined);
+
 module.exports = router;

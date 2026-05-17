@@ -33,7 +33,23 @@ async function createUser(names, email) {
     }
 }
 
+async function createDeclined(name) {
+    const declinedCollection = (await database.initializeCollections()).declined;
+    const declined = {
+        name: name
+    };
+    const operation = await declinedCollection.insertOne(declined);
+    if (operation.acknowledged) {
+        log.info("Declined user created");
+        return declined;
+    } else {
+        log.info("Declined user could not be created");
+        return false;
+    }
+}
+
 module.exports = {
     getUsers,
-    createUser
+    createUser,
+    createDeclined
 };

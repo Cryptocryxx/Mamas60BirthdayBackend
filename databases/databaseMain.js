@@ -25,6 +25,10 @@ async function createUser(names, email) {
     return await databaseUsers.createUser(names, email);
 }
 
+async function createDeclined(name) {
+    return await databaseUsers.createDeclined(name);
+}
+
  function getDB(){
     return  db
 }
@@ -38,8 +42,10 @@ async function createUser(names, email) {
 
 async function initializeCollections() {
     const users = db.collection("users");
+    const declined = db.collection("declined");
    return {
-        users: users
+        users: users,
+        declined: declined
     };
 }
 

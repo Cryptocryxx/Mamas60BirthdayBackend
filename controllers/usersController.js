@@ -80,7 +80,24 @@ function formatNames(names) {
     return `${names.slice(0, -1).join(", ")} und ${names[names.length - 1]}`;
 }
 
+async function createDeclined(req, res) {
+    try {
+        const {name} = req.body;    
+        if (name) {
+            const declined = await database.createDeclined(name);   
+            if (declined) {
+                res.send(declined)
+            }else {
+                res.status(500).json("Declined user could not be created")
+            } 
+        }
+    }catch (err) {
+        res.status(500).json({message: "Something went wrong", err: err})
+    }
+}
+
 module.exports = {
     getUsers,
-    createUser
+    createUser,
+    createDeclined
 }
