@@ -21,7 +21,7 @@ async function createUser(req, res) {
         if (names && userEmail) {
             const user = await database.createUser(names, userEmail);
             if (user) {
-                email.sendEmail("Willkommen zu Anetts 60. Geburtstag!", getUserEmailText(names), userEmail);
+                email.sendEmail("Willkommen zu Anetts 60. Geburtstag!", getUserEmailText(names), getUserEmailPlainText(names), userEmail);
                 res.send(user)
             }else {
                 res.status(500).json("User could not be created")
@@ -76,7 +76,9 @@ function getUserEmailText(names) {
                     >
 
                         <tr>
-                            <td style="
+                            <!-- HIER IST DER FALLBACK: bgcolor für alte Clients, background-color für neue -->
+                            <td bgcolor="#4a0e4e" style="
+                                background-color:#4a0e4e;
                                 background-image:url('cid:background');
                                 background-size:cover;
                                 background-position:center;
@@ -221,6 +223,46 @@ function getUserEmailText(names) {
     </body>
     </html>
     `;
+}
+
+function getUserEmailPlainText(names) {
+    if (names.length === 0) {
+        return null;
+    }
+
+    const formattedNames = formatNames(names);
+
+    let euchDich = names.length > 1 ? "Euch" : "Dich";
+    let euchDir = names.length > 1 ? "Euch" : "Dir";
+    let bistSeid = names.length > 1 ? "seid" : "bist";
+    let duIhr = names.length > 1 ? "Ihr" : "Du";
+    let pluralT = names.length > 1 ? "t" : "";
+    let singularS = names.length > 1 ? "" : "s";
+    let uUe = names.length > 1 ? "ü" : "u";
+
+    return `Hallo ${formattedNames},
+
+unglaublich, aber wahr – ich werde 60 Jahr!
+Und das muss natürlich gebührend gefeiert werden – und am liebsten mit ${euchDir}!
+
+Los geht´s um 15:00 Uhr bei mir in der Carl-Diem-Straße 7 mit einem fröhlichen Anstoßen (Ja, es gibt Sekt!) sowie Kaffee und Kuchen.
+
+Sobald wir uns ausreichend gestärkt und eingestimmt haben, zieht die Feier weiter an einen geheimnisvollen Ort mit toller Atmosphäre unter freiem Himmel…
+
+Keine Sorge – verhungern m${uUe}sst ${duIhr} dort auch nicht. Es wartet etwas Leckeres auf uns!
+
+Da das Ganze draußen stattfindet, denk${pluralT} bitte an warme Kleidung und falls ${duIhr} besonders schlau ${bistSeid}, bring${pluralT} gerne eine Decke mit.
+
+Zum gemütlichen Ausklang lassen wir den Abend am Feuerkorb knistern.
+
+Ich freue mich riesig, dass ${duIhr} dabei ${bistSeid}!
+
+Ganz herzliche Grüße
+
+Anett
+
+---
+P.S. Falls ${duIhr} eine Übernachtungsmöglichkeit benötig${singularS}t, melde${pluralT} ${euchDich} gerne direkt bei mir.`;
 }
 
 function formatNames(names) {

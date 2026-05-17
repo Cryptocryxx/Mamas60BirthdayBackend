@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const { createEvent } = require('ics');
 
-function sendEmail(subject, text, toEmail = "l.bauscher@gmx.de", fromEmail = "Anett's 60. Geburtstag") {
+function sendEmail(subject, text, plainText, toEmail = "l.bauscher@gmx.de", fromEmail = "Anett's 60. Geburtstag") {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -16,6 +16,7 @@ function sendEmail(subject, text, toEmail = "l.bauscher@gmx.de", fromEmail = "An
         to: toEmail,
         subject: subject,
         html: text,
+        text: plainText,
         attachments: [
             {
                 filename: 'Background.png',
