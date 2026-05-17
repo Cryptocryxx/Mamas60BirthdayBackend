@@ -148,18 +148,18 @@ function getUserEmailText(names) {
                                             und eingestimmt haben,
                                             zieht die Feier weiter an
                                             einen geheimnisvollen Ort mit
-                                            toller Athmosphäre unter freiem Himmel…
+                                            toller Atmosphäre unter freiem Himmel…
                                         </p>
 
                                         <p>
                                             Keine Sorge –
                                             verhungern m${uUe}sst ${duIhr}
                                             dort auch nicht.
-                                            Es wartet etwas leckeres auf uns!
+                                            Es wartet etwas Leckeres auf uns!
                                         </p>
 
                                         <p>
-                                            Da das ganze draußen stattfindet,
+                                            Da das Ganze draußen stattfindet,
                                             denk${pluralT} bitte
                                             an warme Kleidung
                                             und falls ${duIhr} besonders 
@@ -168,7 +168,7 @@ function getUserEmailText(names) {
                                         </p>
 
                                         <p>
-                                            Zum gemütklichen Ausklang 
+                                            Zum gemütlichen Ausklang 
                                             lassen wir den Abend am 
                                             Feuerkorb knister.
                                         </p>
