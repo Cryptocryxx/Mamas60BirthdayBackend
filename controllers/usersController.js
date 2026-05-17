@@ -1,6 +1,7 @@
 const database = require('../databases/databaseMain')
 const email = require("../logging/mail")
 const log = require("../logging/logger");
+const { use } = require('react');
 
 async function getUsers(req, res) {
     try {
@@ -21,7 +22,7 @@ async function createUser(req, res) {
         if (names && userEmail) {
             const user = await database.createUser(names, userEmail);
             if (user) {
-                email.sendEmail("Willkommen zu Anetts 60. Geburtstag!", getUserEmailText(names));
+                email.sendEmail("Willkommen zu Anetts 60. Geburtstag!", getUserEmailText(names), userEmail);
                 res.send(user)
             }else {
                 res.status(500).json("User could not be created")
