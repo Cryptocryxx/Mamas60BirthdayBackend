@@ -21,7 +21,7 @@ async function createUser(req, res) {
         if (names && userEmail) {
             const user = await database.createUser(names, userEmail);
             if (user) {
-                email.sendEmail("Anett's 60. Geburtstag", userEmail, "Willkommen zu Mamas 60. Geburtstag!", getUserEmailText(names));
+                email.sendEmail("Willkommen zu Anetts 60. Geburtstag!", getUserEmailText(names));
                 res.send(user)
             }else {
                 res.status(500).json("User could not be created")
