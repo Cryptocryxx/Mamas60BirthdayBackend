@@ -33,41 +33,185 @@ async function createUser(req, res) {
 }
 
 function getUserEmailText(names) {
-    if (names.length == 0) {
+
+    if (names.length === 0) {
         return null;
     }
+
     const formattedNames = formatNames(names);
-    let euchDich = names.length > 1 ? "euch" : "dich";
-    let euchDir = names.length > 1 ? "euch" : "dir";
-    let bistSeid = names.length > 1 ? "seid" : "bist";
-    let duIhr = names.length > 1 ? "ihr" : "du";
+
+    let euchDich = names.length > 1 ? "Euch" : "Dich";
+    let euchDir = names.length > 1 ? "Euch" : "Dir";
+    let bistSeid = names.length > 1 ? "Seid" : "Bist";
+    let duIhr = names.length > 1 ? "Ihr" : "Du";
     let pluralT = names.length > 1 ? "t" : "";
     let singularS = names.length > 1 ? "" : "s";
     let uUe = names.length > 1 ? "ü" : "u";
-    let emailText = `
-        Hallo ${formattedNames},
 
-        unglaublich, aber wahr - ich werde 60 Jahr!
-        Und das muss natürlich gebührend gefeiert werden - und am liebsten mit ${euchDir}!
+    return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
 
+    <body style="
+        margin:0;
+        padding:0;
+        background:#2a003f;
+        font-family: Arial, sans-serif;
+    ">
 
-        Los geht´s um 15:00 Uhr bei mir in der Carl-Diem-Straße 7 mit einem fröhlichen Anstoßen (ja, genau - Sekt!) sowie Kaffee und Kuchen.
-        Sobald wir uns ausreichend gestärkt und eingestimmt haben, zieht die Feier weiter an einen geheimnisvollen Ort mit toller Atmosphäre unter freiem Himmel…..
-        Keine Sorge - verhungern m${uUe}sst ${duIhr} dort auch nicht; es wartet etwas Leckeres auf uns!
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td align="center"">
 
-        Da das ganze draußen stattfindet, denk${pluralT} bitte an warme Kleidung - und falls ${duIhr} besonders schlau ${bistSeid}: bring${pluralT} eine Decke mit.
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0"
+                        style="
+                            max-width:600px;
+                            background:#f4ebff;
+                            overflow:hidden;
+                        "
+                    >
 
-        Zum gemütlichen Ausklang lassen wir den Abend gemeinsam am Feuerkorb knistern.
-        Ich freue mich riesig, dass ${duIhr} dabei ${bistSeid}!
+                        <tr>
+                            <td style="
+                                background-image:url('cid:background');
+                                background-size:cover;
+                                background-position:center;
+                                padding:30px 20px;
+                            ">
 
-        Ganz herzliche Grüße
+                                <div style="
+                                    background:rgba(255, 255, 255, 0.28);
+                                    border-radius:20px;
+                                    padding:24px;
+                                    color:#222;
+                                ">
 
-        Anett
+                                    <div style="text-align:center;">
 
-        P.S. Falls ${duIhr} eine Übernachtungsmöglichkeit benötig${singularS}t, melde${pluralT} ${euchDich} gerne bei mir direkt
-    `
-    return emailText;
+                                        <div style="
+                                            font-size:52px;
+                                            margin-bottom:10px;
+                                        ">
+                                            
+                                        </div>
+
+                                        <h1 style="
+                                            margin:0;
+                                            font-size:42px;
+                                            line-height:1.2;
+                                            color:#1f1f1f;
+                                        ">
+                                            Anett<br>wird 60
+                                        </h1>
+
+                                        <div style="
+                                            font-size:52px;
+                                            margin-top:10px;
+                                        ">
+                                            
+                                        </div>
+
+                                    </div>
+
+                                    <div style="
+                                        margin-top:35px;
+                                        font-size:20px;
+                                        line-height:1.8;
+                                        color:#333;
+                                    ">
+
+                                        <p>
+                                            Hallo ${formattedNames},
+                                        </p>
+
+                                        <p>
+                                            unglaublich, aber wahr –
+                                            ich werde 60 Jahr!
+                                            Und das muss natürlich gebührend gefeiert werden –
+                                            und am liebsten mit ${euchDir}!
+                                        </p>
+
+                                        <p>
+                                            Los geht´s um <b>15:00 Uhr</b>
+                                            bei mir in der
+                                            <b>Carl-Diem-Straße 7</b>
+                                            mit einem fröhlichen Anstoßen 
+                                            sowie Kaffee und Kuchen.
+                                        </p>
+
+                                        <p>
+                                            Danach zieht die Feier weiter
+                                            an einen geheimnisvollen Ort
+                                            unter freiem Himmel…
+                                        </p>
+
+                                        <p>
+                                            Keine Sorge –
+                                            verhungern m${uUe}sst ${duIhr}
+                                            dort auch nicht 
+                                        </p>
+
+                                        <p>
+                                            Bitte denk${pluralT}
+                                            an warme Kleidung
+                                            und bring${pluralT}
+                                            gerne eine Decke mit 
+                                        </p>
+
+                                        <p>
+                                            Ich freue mich riesig,
+                                            dass ${duIhr} dabei ${bistSeid}!
+                                        </p>
+
+                                        <br>
+
+                                        <p>
+                                            Ganz herzliche Grüße
+                                            <br><br>
+                                            <b>Anett</b>
+                                        </p>
+
+                                        <hr style="
+                                            border:none;
+                                            border-top:1px solid #ddd;
+                                            margin:30px 0;
+                                        ">
+
+                                        <p style="
+                                            font-size:15px;
+                                            color:#666;
+                                            line-height:1.6;
+                                        ">
+                                            P.S. Falls ${duIhr}
+                                            eine Übernachtungsmöglichkeit
+                                            benötig${singularS}t,
+                                            melde${pluralT}
+                                            ${euchDich}
+                                            gerne direkt bei mir.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+
+    </body>
+    </html>
+    `;
 }
+
 function formatNames(names) {
     if (names.length === 1) {
         return names[0];
