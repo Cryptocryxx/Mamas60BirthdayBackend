@@ -1,7 +1,6 @@
 const database = require('../databases/databaseMain')
 const email = require("../logging/mail")
 const log = require("../logging/logger");
-const { use } = require('react');
 
 async function getUsers(req, res) {
     try {
