@@ -96,8 +96,25 @@ async function createDeclined(req, res) {
     }
 }
 
+async function getDeclined(req, res) {
+    try {
+        const declinedCollection = (await database.initializeCollections()).declined;
+        const declined = await declinedCollection.find({}).toArray();
+        if (declined.length == 0) {
+            log.info("No declined users found")
+            res.status(500).json("there were no declined users found")
+        }else {
+            log.info("Declined users found")
+            res.send(declined)
+        }
+    }catch (err) {
+        res.status(500).json({message: "Something went wrong", err: err})
+    }
+}
+
 module.exports = {
     getUsers,
     createUser,
-    createDeclined
+    createDeclined,
+    getDeclined
 }

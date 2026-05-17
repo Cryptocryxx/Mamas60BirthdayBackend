@@ -48,6 +48,18 @@ async function createDeclined(name) {
     }
 }
 
+async function getDeclined() {
+    const declinedCollection = (await database.initializeCollections()).declined;
+    const declined = await declinedCollection.find({}).toArray();
+    if (declined.length == 0) {
+        log.info("No declined users found")
+        return false;
+    } else {
+        log.info("Declined users found")
+        return declined;
+    }
+}
+
 module.exports = {
     getUsers,
     createUser,

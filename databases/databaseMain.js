@@ -29,6 +29,10 @@ async function createDeclined(name) {
     return await databaseUsers.createDeclined(name);
 }
 
+async function getDeclined() {
+    return await databaseUsers.getDeclined();
+}
+
  function getDB(){
     return  db
 }
@@ -55,5 +59,7 @@ Object.assign(exports, {
     getDB,
     initializeCollections,
     getUsers,
-    createUser
+    createUser,
+    createDeclined,
+    getDeclined
 })
