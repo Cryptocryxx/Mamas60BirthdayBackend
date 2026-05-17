@@ -42,7 +42,7 @@ function getUserEmailText(names) {
 
     let euchDich = names.length > 1 ? "Euch" : "Dich";
     let euchDir = names.length > 1 ? "Euch" : "Dir";
-    let bistSeid = names.length > 1 ? "Seid" : "Bist";
+    let bistSeid = names.length > 1 ? "seid" : "bist";
     let duIhr = names.length > 1 ? "Ihr" : "Du";
     let pluralT = names.length > 1 ? "t" : "";
     let singularS = names.length > 1 ? "" : "s";
@@ -139,27 +139,38 @@ function getUserEmailText(names) {
                                             Los geht´s um <b>15:00 Uhr</b>
                                             bei mir in der
                                             <b>Carl-Diem-Straße 7</b>
-                                            mit einem fröhlichen Anstoßen 
+                                            mit einem fröhlichen Anstoßen (Ja, es gibt Sekt!)
                                             sowie Kaffee und Kuchen.
                                         </p>
 
                                         <p>
-                                            Danach zieht die Feier weiter
-                                            an einen geheimnisvollen Ort
-                                            unter freiem Himmel…
+                                            Sobald wir uns ausreichend gestärkt
+                                            und eingestimmt haben,
+                                            zieht die Feier weiter an
+                                            einen geheimnisvollen Ort mit
+                                            toller Athmosphäre unter freiem Himmel…
                                         </p>
 
                                         <p>
                                             Keine Sorge –
                                             verhungern m${uUe}sst ${duIhr}
-                                            dort auch nicht 
+                                            dort auch nicht.
+                                            Es wartet etwas leckeres auf uns!
                                         </p>
 
                                         <p>
-                                            Bitte denk${pluralT}
+                                            Da das ganze draußen stattfindet,
+                                            denk${pluralT} bitte
                                             an warme Kleidung
-                                            und bring${pluralT}
-                                            gerne eine Decke mit 
+                                            und falls ${duIhr} besonders 
+                                            schlau ${bistSeid}, bring${pluralT}
+                                            gerne eine Decke mit.
+                                        </p>
+
+                                        <p>
+                                            Zum gemütklichen Ausklang 
+                                            lassen wir den Abend am 
+                                            Feuerkorb knister.
                                         </p>
 
                                         <p>
