@@ -172,7 +172,7 @@ function getUserEmailText(names) {
                                         <p>
                                             Zum gemütlichen Ausklang 
                                             lassen wir den Abend am 
-                                            Feuerkorb knister.
+                                            Feuerkorb knistern.
                                         </p>
 
                                         <p>
