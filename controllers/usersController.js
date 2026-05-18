@@ -32,6 +32,43 @@ async function createUser(req, res) {
     }
 }
 
+async function deleteUser(req, res) {
+    try {
+        const {id} = req.params;
+        if (id) {
+            const deletedUser = await database.deleteUser(id);
+            if (deletedUser) {
+                res.send(deletedUser)
+            }else {
+                res.status(500).json("User could not be deleted")
+            }
+        }
+    }catch (err) {
+        res.status(500).json({message: "Something went wrong", err: err})
+    }
+}
+
+async function deleteDeclined(req, res) {
+    try {
+        const {id} = req.params;
+        if (id) {
+            const deletedDeclined = await database.deleteDeclined(id);
+            if (deletedDeclined) {
+                res.send(deletedDeclined)
+            }else {
+                res.status(500).json("Declined user could not be deleted")
+            }
+        }
+    }catch (err) {
+        res.status(500).json({message: "Something went wrong", err: err})
+    }
+}
+
+
+
+
+
+
 function getUserEmailText(names) {
 
     if (names.length === 0) {
@@ -313,5 +350,7 @@ module.exports = {
     getUsers,
     createUser,
     createDeclined,
-    getDeclined
+    getDeclined,
+    deleteUser,
+    deleteDeclined
 }

@@ -21,7 +21,8 @@ async function createUser(names, email) {
     const usersCollection = (await database.initializeCollections()).users;
     const user = {
         names: names,
-        email: email
+        email: email,
+        createdAt: new Date()
     }
     const operation = await usersCollection.insertOne(user); 
     if (operation.acknowledged) {
@@ -36,7 +37,8 @@ async function createUser(names, email) {
 async function createDeclined(name) {
     const declinedCollection = (await database.initializeCollections()).declined;
     const declined = {
-        name: name
+        name: name,
+        createdAt: new Date()
     };
     const operation = await declinedCollection.insertOne(declined);
     if (operation.acknowledged) {
@@ -60,8 +62,35 @@ async function getDeclined() {
     }
 }
 
+async function deleteUser(id) {
+    const usersCollection = (await database.initializeCollections()).users;
+    const operation = await usersCollection.deleteOne({ _id: new ObjectId(id) });
+    if (operation.deletedCount === 1) {
+        log.info("User deleted");
+        return true;
+    } else {
+        log.info("User could not be deleted");
+        return false;
+    }
+}
+
+async function deleteDeclined(id) {
+    const declinedCollection = (await database.initializeCollections()).declined;
+    const operation = await declinedCollection.deleteOne({ _id: new ObjectId(id) });
+    if (operation.deletedCount === 1) {
+        log.info("Declined user deleted");
+        return true;
+    } else {
+        log.info("Declined user could not be deleted");
+        return false;
+    }   
+}
+
 module.exports = {
     getUsers,
     createUser,
-    createDeclined
+    createDeclined,
+    getDeclined,
+    deleteUser,
+    deleteDeclined
 };

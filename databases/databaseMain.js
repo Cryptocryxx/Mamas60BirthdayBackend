@@ -33,6 +33,13 @@ async function getDeclined() {
     return await databaseUsers.getDeclined();
 }
 
+async function deleteUser(id) {
+    return await databaseUsers.deleteUser(id);
+}
+async function deleteDeclined(id) {
+    return await databaseUsers.deleteDeclined(id);
+}
+
  function getDB(){
     return  db
 }
@@ -61,5 +68,7 @@ Object.assign(exports, {
     getUsers,
     createUser,
     createDeclined,
-    getDeclined
+    getDeclined,
+    deleteUser,
+    deleteDeclined
 })

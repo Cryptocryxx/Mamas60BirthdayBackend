@@ -100,4 +100,8 @@ router.post('/declined', usersController.createDeclined);
  */
 router.get('/declined', usersController.getDeclined);
 
+router.delete('/:id', usersController.deleteUser);
+
+router.delete('/declined/:id', usersController.deleteDeclined);
+
 module.exports = router;
